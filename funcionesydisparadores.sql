@@ -1,6 +1,6 @@
 CREATE DATABASE Atest;
 USE Atest;
-
+-- Creación de la tabla --
 CREATE TABLE record(
 idrecord INT(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
 nombreparticipante VARCHAR(30) NOT NULL,
@@ -12,7 +12,7 @@ categoria VARCHAR(30) NOT NULL,
 total INT(10)NOT NULL 
 )ENGINE=INNODB;
 
-
+-- función suma de records --
 DELIMITER $$
 CREATE FUNCTION sumapuntaje(a INT(10),b INT(10),c INT(10),d INT(10))RETURNS INT(10)
 BEGIN
@@ -24,7 +24,7 @@ $$
 
 SELECT sumapuntaje(150,360,271,200)
 
-
+-- función prueba mensajes--
 DELIMITER $$
 CREATE FUNCTION mensajepuntaje(resultado INT(10))RETURNS VARCHAR(20)
 BEGIN
@@ -37,7 +37,7 @@ END;
 $$
 
 SELECT mensajepuntaje(200)
-
+-- función qué arroja la categoria --
 DELIMITER $$
 CREATE FUNCTION mensajes(resultado INT(10))RETURNS VARCHAR(20)
 BEGIN
@@ -58,7 +58,7 @@ END;
 $$
 
 SELECT mensajes(400)
-
+-- Disparador que se ejecuta al hacer inserciones ---
 DELIMITER $$
 CREATE TRIGGER eldispara BEFORE INSERT ON record
 FOR EACH ROW 
